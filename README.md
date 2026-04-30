@@ -1,6 +1,6 @@
 # SleepMonitor — Long-Sleep Detection via DLL Injection
 
-A system-wide sleep monitor for Windows that hooks `Sleep` and `SleepEx` via
+A system-wide sleep monitor for Windows that hooks `Sleep`, `SleepEx` and `NTDelayExecuton`  via
 MinHook DLL injection. Built for advanced computer-defense coursework.
 
 ---
@@ -88,18 +88,9 @@ bin\SleepMonitor.exe [allowlist.json]
 
 The allowlist is a plain JSON file loaded at startup.
 
-```bat
-:: Add an entry
-SleepMonitor.exe --add   powershell.exe  "approved admin script"
 
-:: Remove an entry
-SleepMonitor.exe --remove powershell.exe
 
-:: Print all entries
-SleepMonitor.exe --list
-```
-
-The file is saved in-place; entries are case-insensitive and match on the
+The file is  case-insensitive and match on the
 basename of the process image (no path, no wildcards).
 
 ### Default false-positive entries
@@ -131,16 +122,12 @@ Each alert is a newline-terminated JSON object:
 {"pid":1234,"process":"malware.exe","fn":"Sleep","ms":300000}
 ```
 
-You can replace the console sink in `monitor.cpp → HandlePipeClient()` with
-any backend: file logging, ETW events, Syslog, Windows Event Log, etc.
 
 ---
 
 ## Extending
 
 ### Log to file
-
-Replace or augment the `printf` in `HandlePipeClient`:
 
 ```cpp
 FILE* logf = fopen("sleepmonitor.log", "a");
@@ -156,23 +143,5 @@ else if (ms >=  300000) SetColor(Color::Yellow);  // >= 5 min
 else                    SetColor(Color::Cyan);
 ```
 
-### Integrate with Windows Event Log
-
-Use `ReportEventW` inside `HandlePipeClient` after registering an event source.
-
-### Kernel-mode alternative
-
-For production use replace the `CreateRemoteThread + LoadLibraryW` injection
-with a minifilter or kernel driver using `PsSetCreateProcessNotifyRoutineEx`
-and Kernel Patch Protection-safe hooking (SSDT shadowing or ETW-TI callbacks).
-This user-mode approach is intentionally simpler for a lab/classroom context.
-
 ---
 
-## Limitations & Notes
-
-- **Requires Administrator** — needed for `OpenProcess` on most PIDs.
-- **Protected processes** (PPL) cannot be injected; they will be skipped silently.
-- **32-bit processes** require a separate x86 build of the hook DLL.
-- **AntiCheat / AV** may detect `CreateRemoteThread` injection; run in a lab VM.
-- This tool is for **educational and defensive use only**.
