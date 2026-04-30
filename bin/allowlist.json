@@ -1,0 +1,49 @@
+{
+  "threshold_ms": 1000,
+  "allowlist": [
+    { "process": "svchost.exe", "reason": "Windows service host - legitimate long waits" },
+    { "process": "searchhost.exe", "reason": "Windows Search indexer" },
+    { "process": "wmiprvse.exe", "reason": "WMI provider host" },
+    { "process": "msmpeng.exe", "reason": "Windows Defender antivirus engine" },
+    { "process": "taskhostw.exe", "reason": "Windows task host" },
+    { "process": "backgroundtaskhost.exe", "reason": "Background UWP tasks" },
+    { "process": "runtimebroker.exe", "reason": "UWP app runtime broker" },
+    { "process": "sihost.exe", "reason": "Shell infrastructure host" },
+    { "process": "ctfmon.exe", "reason": "Text services framework" },
+    { "process": "dwm.exe", "reason": "Desktop Window Manager" },
+    { "process": "lsass.exe", "reason": "Local Security Authority - do not hook" },
+    { "process": "smss.exe", "reason": "Session Manager - do not hook" },
+    { "process": "wininit.exe", "reason": "Windows initialization" },
+    { "process": "services.exe", "reason": "Service Control Manager" },
+
+    { "process": "msedgewebview2.exe", "reason": "Internet Browser" },
+    { "process": "shellhost.exe.exe", "reason": "CLI" },
+  
+    { "process": "dllhost.exe", "reason": "common dllhost service" },
+    { "process": "steamwebhelper.exe", "reason": "steam support" },
+    { "process": "startmenuexperiencehost.exe", "reason": "native windows" },
+   
+    { "process": "conhost.exe", "reason": "native windows" },
+    { "process": "SleepMonitor.exe", "reason": "self" },
+    { "process": "Malwarebytes.exe", "reason": "AV" },
+    { "process": "VCTIP.EXE", "reason": "IDK" },
+    { "process": "ramdiskws.exe", "reason": "RamDisk" },
+    { "process": "ServiceHub.IntellicodeModelService.exe", "reason": "IDK" },
+
+    { "process": "MSPCManagerCore.exe", "reason": "IDK" },
+    { "process": "ArmouryCrate.UserSessionHelper.exe", "reason": "IDK" },
+    { "process": "TextInputHost.exe", "reason": "IDK" },
+    { "process": "PerfWatson2.exe", "reason": "IDK" },
+
+    { "process": "FanControl.exe", "reason": "fan control software" },
+
+    { "process": "Overwolf.exe", "reason": "IDK" },
+    { "process": "Taskmgr.exe", "reason": "IDK" },
+    { "process": "PerfWatson2.exe", "reason": "IDK" },
+    { "process": "PerfWatson2.exe", "reason": "IDK" },
+    { "process": "PerfWatson2.exe", "reason": "IDK" },
+
+
+    { "process": "csrss.exe", "reason": "Client/Server" }
+  ]
+}

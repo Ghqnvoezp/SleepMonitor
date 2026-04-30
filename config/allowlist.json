@@ -1,0 +1,20 @@
+{
+  "threshold_ms": 5000,
+  "allowlist": [
+    { "process": "svchost.exe",       "reason": "Windows service host — legitimate long waits" },
+    { "process": "SearchHost.exe",    "reason": "Windows Search indexer" },
+    { "process": "WmiPrvSE.exe",      "reason": "WMI provider host" },
+    { "process": "MsMpEng.exe",       "reason": "Windows Defender antivirus engine" },
+    { "process": "taskhostw.exe",     "reason": "Windows task host" },
+    { "process": "backgroundTaskHost.exe", "reason": "Background UWP tasks" },
+    { "process": "RuntimeBroker.exe", "reason": "UWP app runtime broker" },
+    { "process": "sihost.exe",        "reason": "Shell infrastructure host" },
+    { "process": "ctfmon.exe",        "reason": "Text services framework" },
+    { "process": "dwm.exe",           "reason": "Desktop Window Manager" },
+    { "process": "lsass.exe",         "reason": "Local Security Authority — do not hook" },
+    { "process": "csrss.exe",         "reason": "Client/Server Runtime — do not hook" },
+    { "process": "smss.exe",          "reason": "Session Manager — do not hook" },
+    { "process": "wininit.exe",       "reason": "Windows initialization" },
+    { "process": "services.exe",      "reason": "Service Control Manager" }
+  ]
+}
